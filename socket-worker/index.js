@@ -52,7 +52,7 @@ socket.on("history", (hist) => {
   );
 });
 
-socket.on("message", (msg, callback) => {
+socket.on("message", (msg) => {
   if (msg.text && /@bot/i.test(msg.text) && msg.fromUserId !== BOT_USER_ID) {
     const reply = `Hi! You mentioned me. Time: ${new Date().toLocaleTimeString()}`;
     const target = msg.toUserId
@@ -63,9 +63,6 @@ socket.on("message", (msg, callback) => {
   if (msg.text) {
     console.log("🚀 ~ message:", msg);
   }
-  callback({
-    status: "ok",
-  });
 });
 
 process.on("SIGINT", () => {
